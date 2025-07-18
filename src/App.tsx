@@ -14,6 +14,7 @@ import Analytics from "./pages/Analytics";
 import Integrations from "./pages/Integrations";
 import APIDocs from "./pages/APIDocs";
 import Mobile from "./pages/Mobile";
+import Performance from "./pages/Performance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="integrations" element={<Integrations />} />
               <Route path="api-docs" element={<APIDocs />} />
               <Route path="mobile/*" element={<Mobile />} />
+              <Route path="performance" element={<Performance />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>
