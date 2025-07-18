@@ -39,6 +39,8 @@ import {
   ExternalLink
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { GitImportDialog } from "@/components/GitImportDialog";
+import { TeamManagementDialog } from "@/components/TeamManagementDialog";
 
 type EnvironmentStatus = 'synced' | 'syncing' | 'error' | 'inactive';
 
@@ -64,6 +66,8 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [activeEnv, setActiveEnv] = useState<string | null>(null);
+  const [showGitImport, setShowGitImport] = useState(false);
+  const [showTeamManagement, setShowTeamManagement] = useState(false);
 
   // Action handlers
   const handleStartSync = (envId: string) => {
@@ -104,17 +108,15 @@ const Dashboard = () => {
   };
 
   const handleJoinTeam = () => {
-    toast({
-      title: "Join team",
-      description: "Team invitation feature will open",
-    });
+    setShowTeamManagement(true);
   };
 
   const handleImportFromGit = () => {
-    toast({
-      title: "Import from Git",
-      description: "Git import wizard will open",
-    });
+    setShowGitImport(true);
+  };
+
+  const handleGitImportComplete = (repoData: any) => {
+    setEnvironments(prev => [...prev, repoData]);
   };
 
   // Mock data for environments
@@ -589,8 +591,20 @@ const Dashboard = () => {
               </Card>
             </div>
           </div>
-    </div>
-  );
-};
+        
+        {/* Dialogs */}
+        <GitImportDialog 
+          open={showGitImport}
+          onClose={() => setShowGitImport(false)}
+          onImportComplete={handleGitImportComplete}
+        />
+        
+        <TeamManagementDialog 
+          open={showTeamManagement}
+          onClose={() => setShowTeamManagement(false)}
+        />
+      </div>
+    );
+  };
 
-export default Dashboard;
+  export default Dashboard;
