@@ -25,7 +25,8 @@ import {
   Zap, 
   Bot, 
   Users, 
-  Shield 
+  Shield,
+  Settings
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -46,6 +47,8 @@ const toolsNavItems = [
 const advancedNavItems = [
   { title: "Intelligence Artificielle", url: "/ai", icon: Bot },
   { title: "Collaboration", url: "/collaboration", icon: Users },
+  { title: "Équipes", url: "/teams", icon: Users },
+  { title: "Paramètres", url: "/settings", icon: Settings },
   { title: "Audit", url: "/audit", icon: Shield },
 ];
 

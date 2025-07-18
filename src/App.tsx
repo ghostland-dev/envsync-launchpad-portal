@@ -18,6 +18,9 @@ import Performance from "./pages/Performance";
 import AI from "./pages/AI";
 import Collaboration from "./pages/Collaboration";
 import Audit from "./pages/Audit";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Teams from "./pages/Teams";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +46,9 @@ const App = () => (
               <Route path="ai" element={<AI />} />
               <Route path="collaboration" element={<Collaboration />} />
               <Route path="audit" element={<Audit />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="teams" element={<Teams />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>
