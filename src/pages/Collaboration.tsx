@@ -3,15 +3,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CollaborativeEditor } from '@/components/collaboration/CollaborativeEditor';
 import { EnvironmentBranching } from '@/components/collaboration/EnvironmentBranching';
 import { ApprovalWorkflows } from '@/components/collaboration/ApprovalWorkflows';
+import { GitIntegration } from '@/components/collaboration/GitIntegration';
 
 const Collaboration: React.FC = () => {
   return (
     <div className="container mx-auto p-6 space-y-6">
       <Tabs defaultValue="editor" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="editor">Live Editor</TabsTrigger>
           <TabsTrigger value="branching">Branching</TabsTrigger>
           <TabsTrigger value="approvals">Approvals</TabsTrigger>
+          <TabsTrigger value="git">Git Integration</TabsTrigger>
           <TabsTrigger value="permissions">Permissions</TabsTrigger>
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
         </TabsList>
@@ -26,6 +28,10 @@ const Collaboration: React.FC = () => {
 
         <TabsContent value="approvals">
           <ApprovalWorkflows />
+        </TabsContent>
+
+        <TabsContent value="git">
+          <GitIntegration />
         </TabsContent>
 
         <TabsContent value="permissions">
