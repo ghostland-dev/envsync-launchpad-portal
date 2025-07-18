@@ -40,6 +40,38 @@ const breadcrumbMap: Record<string, { label: string; href?: string }[]> = {
   '/api-docs': [
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'API Documentation' }
+  ],
+  '/performance': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Performance' }
+  ],
+  '/settings': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Settings' }
+  ],
+  '/mobile': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Mobile' }
+  ],
+  '/collaboration': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Collaboration' }
+  ],
+  '/ai': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'AI Assistant' }
+  ],
+  '/audit': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Audit' }
+  ],
+  '/teams': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Teams' }
+  ],
+  '/profile': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Profile' }
   ]
 };
 
