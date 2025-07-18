@@ -85,10 +85,8 @@ export function AppSidebar() {
                   end 
                   className={({ isActive }) => `flex items-center space-x-2 w-full ${getNavClassName(isActive)}`}
                 >
-                  <div className="flex items-center space-x-2 w-full">
-                    <item.icon className="h-4 w-4 flex-shrink-0" />
-                    {!collapsed && <span className="truncate">{item.title}</span>}
-                  </div>
+                  <item.icon className="h-4 w-4 flex-shrink-0" />
+                  {!collapsed && <span className="truncate">{item.title}</span>}
                 </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -121,15 +119,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter className="border-t border-border/50 p-2">
-        <SidebarTrigger asChild>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="w-full justify-start"
-          >
-            {collapsed ? "→" : "← Réduire"}
-          </Button>
-        </SidebarTrigger>
+        <SidebarTrigger />
       </SidebarFooter>
     </Sidebar>
   );
