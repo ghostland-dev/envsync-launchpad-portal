@@ -8,7 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme by default for modern SaaS look */
+    /* Light theme */
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 46.9%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 84% 4.9%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* EnvSync brand colors */
+    --primary-brand: 217 91% 60%;
+    --secondary-brand: 260 80% 65%;
+    --accent-glow: 191 100% 55%;
+    
+    /* Light mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(260 80% 65%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.05), hsl(260 80% 65% / 0.05));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(210 40% 96% / 0.6));
+    
+    /* Light mode glass effects */
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(214 32% 91% / 0.8);
+    
+    /* Light mode shadows */
+    --shadow-glow: 0 0 50px hsl(217 91% 60% / 0.15);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.08);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark theme */
     --background: 222 20% 6%;
     --foreground: 220 15% 95%;
 
@@ -37,28 +91,18 @@ All colors MUST be HSL.
     --input: 222 15% 12%;
     --ring: 217 91% 60%;
 
-    --radius: 0.75rem;
-
-    /* EnvSync brand colors */
-    --primary-brand: 217 91% 60%;
-    --secondary-brand: 260 80% 65%;
-    --accent-glow: 191 100% 55%;
-    
-    /* Gradients */
+    /* Dark mode gradients */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(260 80% 65%));
     --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(260 80% 65% / 0.1));
     --gradient-card: linear-gradient(145deg, hsl(222 20% 8% / 0.8), hsl(260 25% 12% / 0.6));
     
-    /* Glass effects */
+    /* Dark mode glass effects */
     --glass-bg: hsl(222 20% 12% / 0.3);
     --glass-border: hsl(220 15% 25% / 0.2);
     
-    /* Shadows */
+    /* Dark mode shadows */
     --shadow-glow: 0 0 50px hsl(217 91% 60% / 0.3);
     --shadow-card: 0 8px 32px hsl(222 20% 3% / 0.4);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
