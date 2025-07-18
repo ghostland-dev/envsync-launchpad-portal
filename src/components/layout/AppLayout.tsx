@@ -13,7 +13,9 @@ import { HelpSystem } from "@/components/ui/help-system";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Zap, User, Bell, Settings } from "lucide-react";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
+import { AppSidebar } from "./AppSidebar";
+import { Zap, User, Bell, Menu } from "lucide-react";
 
 const breadcrumbMap: Record<string, { label: string; href?: string }[]> = {
   '/dashboard': [
@@ -51,13 +53,19 @@ export function AppLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Global Navigation */}
-      <header className="glass border-b border-border/50 sticky top-0 z-50">
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full bg-background">
+        <AppSidebar />
+        <SidebarInset className="flex-1">
+          {/* Global Navigation */}
+          <header className="glass border-b border-border/50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {/* Sidebar Trigger & Logo */}
             <div className="flex items-center space-x-4">
+              <SidebarTrigger className="md:hidden">
+                <Menu className="h-4 w-4" />
+              </SidebarTrigger>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <Zap className="h-5 w-5 text-white" />
@@ -128,25 +136,27 @@ export function AppLayout() {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="flex-1">
-        <Outlet />
-      </main>
+          {/* Main Content */}
+          <main className="flex-1">
+            <Outlet />
+          </main>
 
-      {/* Global Keyboard Shortcuts */}
-      <div className="fixed bottom-4 right-4 z-50 hidden lg:block">
-        <Button
-          variant="outline"
-          size="sm"
-          className="glass border-muted text-xs"
-          onClick={() => {
-            const helpTrigger = document.querySelector('[data-help-trigger]') as HTMLElement;
-            helpTrigger?.click();
-          }}
-        >
-          Press ? for shortcuts
-        </Button>
+          {/* Global Keyboard Shortcuts */}
+          <div className="fixed bottom-4 right-4 z-50 hidden lg:block">
+            <Button
+              variant="outline"
+              size="sm"
+              className="glass border-muted text-xs"
+              onClick={() => {
+                const helpTrigger = document.querySelector('[data-help-trigger]') as HTMLElement;
+                helpTrigger?.click();
+              }}
+            >
+              Press ? for shortcuts
+            </Button>
+          </div>
+        </SidebarInset>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }
