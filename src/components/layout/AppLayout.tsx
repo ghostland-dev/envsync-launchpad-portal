@@ -63,9 +63,7 @@ export function AppLayout() {
           <div className="flex justify-between items-center h-16">
             {/* Sidebar Trigger & Logo */}
             <div className="flex items-center space-x-4">
-              <SidebarTrigger className="md:hidden">
-                <Menu className="h-4 w-4" />
-              </SidebarTrigger>
+              <SidebarTrigger className="md:hidden" />
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
                   <Zap className="h-5 w-5 text-white" />

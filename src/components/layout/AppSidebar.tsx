@@ -61,7 +61,7 @@ export function AppSidebar() {
   const isToolsGroupExpanded = toolsNavItems.some((item) => isActive(item.url));
   const isAdvancedGroupExpanded = advancedNavItems.some((item) => isActive(item.url));
 
-  const getNavClassName = ({ isActive }: { isActive: boolean }) =>
+  const getNavClassName = (isActive: boolean) =>
     isActive 
       ? "bg-primary/10 text-primary font-medium border-r-2 border-primary" 
       : "hover:bg-muted/50 transition-colors";
@@ -79,11 +79,11 @@ export function AppSidebar() {
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild className="w-full">
+              <SidebarMenuButton className="w-full">
                 <NavLink 
                   to={item.url} 
                   end 
-                  className={getNavClassName}
+                  className={({ isActive }) => `flex items-center space-x-2 w-full ${getNavClassName(isActive)}`}
                 >
                   <item.icon className="h-4 w-4 flex-shrink-0" />
                   {!collapsed && <span className="truncate">{item.title}</span>}
