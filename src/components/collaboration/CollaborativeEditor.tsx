@@ -279,6 +279,7 @@ export const CollaborativeEditor: React.FC = () => {
                     </div>
                     <Input 
                       value={field.value} 
+                      onChange={(e) => {/* TODO: Add update logic */}}
                       className="mt-2" 
                       readOnly={field.label === 'API_KEY'}
                     />
