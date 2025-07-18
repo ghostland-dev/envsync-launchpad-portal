@@ -12,6 +12,7 @@ import EnvironmentWizard from "./pages/EnvironmentWizard";
 import Feedback from "./pages/Feedback";
 import Analytics from "./pages/Analytics";
 import Integrations from "./pages/Integrations";
+import APIDocs from "./pages/APIDocs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="feedback" element={<Feedback />} />
               <Route path="analytics" element={<Analytics />} />
               <Route path="integrations" element={<Integrations />} />
+              <Route path="api-docs" element={<APIDocs />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Route>

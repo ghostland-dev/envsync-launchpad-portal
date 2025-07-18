@@ -34,6 +34,10 @@ const breadcrumbMap: Record<string, { label: string; href?: string }[]> = {
   '/integrations': [
     { label: 'Dashboard', href: '/dashboard' },
     { label: 'Integrations' }
+  ],
+  '/api-docs': [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'API Documentation' }
   ]
 };
 
