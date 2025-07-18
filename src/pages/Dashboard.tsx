@@ -38,16 +38,87 @@ import {
   Trash2,
   ExternalLink
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
+type EnvironmentStatus = 'synced' | 'syncing' | 'error' | 'inactive';
+
+interface Environment {
+  id: string;
+  name: string;
+  description: string;
+  status: EnvironmentStatus;
+  techStack: string[];
+  lastSync: string;
+  teamMembers: string[];
+  team: string;
+  branch: string;
+  uptime: string;
+  isActive: boolean;
+  error?: string;
+}
 
 const Dashboard = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [activeEnv, setActiveEnv] = useState<string | null>(null);
 
+  // Action handlers
+  const handleStartSync = (envId: string) => {
+    setEnvironments(prev => prev.map(env => 
+      env.id === envId ? { ...env, status: 'syncing' as const, lastSync: 'Syncing now...' } : env
+    ));
+    toast({
+      title: "Sync started",
+      description: `Starting sync for environment ${environments.find(e => e.id === envId)?.name}`,
+    });
+  };
+
+  const handleEditEnvironment = (envId: string) => {
+    const env = environments.find(e => e.id === envId);
+    toast({
+      title: "Opening editor",
+      description: `Editing ${env?.name}`,
+    });
+    navigate('/wizard');
+  };
+
+  const handleViewDetails = (envId: string) => {
+    const env = environments.find(e => e.id === envId);
+    toast({
+      title: "Environment details",
+      description: `Viewing details for ${env?.name}`,
+    });
+  };
+
+  const handleDeleteEnvironment = (envId: string) => {
+    const env = environments.find(e => e.id === envId);
+    setEnvironments(prev => prev.filter(e => e.id !== envId));
+    toast({
+      title: "Environment deleted",
+      description: `${env?.name} has been permanently deleted`,
+      variant: "destructive"
+    });
+  };
+
+  const handleJoinTeam = () => {
+    toast({
+      title: "Join team",
+      description: "Team invitation feature will open",
+    });
+  };
+
+  const handleImportFromGit = () => {
+    toast({
+      title: "Import from Git",
+      description: "Git import wizard will open",
+    });
+  };
+
   // Mock data for environments
-  const environments = [
+  const [environments, setEnvironments] = useState<Environment[]>([
     {
       id: '1',
       name: 'E-commerce Frontend',
@@ -127,7 +198,7 @@ const Dashboard = () => {
       uptime: '95.2%',
       isActive: false
     }
-  ];
+  ]);
 
   // Mock activity data
   const recentActivity = [
@@ -229,11 +300,11 @@ const Dashboard = () => {
               <p className="text-muted-foreground">Welcome back, Sarah! Here's what's happening with your environments.</p>
             </div>
             <div className="flex space-x-3">
-              <Button variant="outline" className="glass border-muted">
+              <Button variant="outline" className="glass border-muted" onClick={handleImportFromGit}>
                 <GitBranch className="mr-2 h-4 w-4" />
                 Import from Git
               </Button>
-              <Button variant="outline" className="glass border-muted">
+              <Button variant="outline" className="glass border-muted" onClick={handleJoinTeam}>
                 <Users className="mr-2 h-4 w-4" />
                 Join Team
               </Button>
@@ -345,24 +416,27 @@ const Dashboard = () => {
                                   <MoreHorizontal className="h-4 w-4" />
                                 </Button>
                               </DropdownMenuTrigger>
-                              <DropdownMenuContent className="glass border-muted">
-                                <DropdownMenuItem>
-                                  <Play className="mr-2 h-4 w-4" />
-                                  Start Sync
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  <Edit className="mr-2 h-4 w-4" />
-                                  Edit
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                  <ExternalLink className="mr-2 h-4 w-4" />
-                                  View Details
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem className="text-red-500">
-                                  <Trash2 className="mr-2 h-4 w-4" />
-                                  Delete
-                                </DropdownMenuItem>
+                               <DropdownMenuContent className="glass border-muted">
+                                 <DropdownMenuItem onClick={() => handleStartSync(env.id)}>
+                                   <Play className="mr-2 h-4 w-4" />
+                                   Start Sync
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem onClick={() => handleEditEnvironment(env.id)}>
+                                   <Edit className="mr-2 h-4 w-4" />
+                                   Edit
+                                 </DropdownMenuItem>
+                                 <DropdownMenuItem onClick={() => handleViewDetails(env.id)}>
+                                   <ExternalLink className="mr-2 h-4 w-4" />
+                                   View Details
+                                 </DropdownMenuItem>
+                                 <DropdownMenuSeparator />
+                                 <DropdownMenuItem 
+                                   className="text-red-500"
+                                   onClick={() => handleDeleteEnvironment(env.id)}
+                                 >
+                                   <Trash2 className="mr-2 h-4 w-4" />
+                                   Delete
+                                 </DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
                           </div>
@@ -502,7 +576,11 @@ const Dashboard = () => {
                         <span className="text-sm font-medium">12</span>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full glass border-muted">
+                    <Button 
+                      variant="outline" 
+                      className="w-full glass border-muted"
+                      onClick={() => navigate('/teams')}
+                    >
                       <Users className="mr-2 h-4 w-4" />
                       Manage Team
                     </Button>
