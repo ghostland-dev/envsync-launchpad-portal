@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,6 +25,7 @@ import {
 } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signup');
 
   const features = [
@@ -189,7 +191,10 @@ const Index = () => {
             </div>
           </div>
           
-          <Button className="w-full bg-gradient-primary hover:opacity-90">
+          <Button 
+            className="w-full bg-gradient-primary hover:opacity-90"
+            onClick={() => navigate('/dashboard')}
+          >
             {authMode === 'signup' ? 'Create Account' : 'Sign In'}
           </Button>
           
