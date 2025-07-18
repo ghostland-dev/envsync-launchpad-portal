@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router-dom";
 import { 
   Breadcrumb,
   BreadcrumbItem,
@@ -75,8 +75,8 @@ export function AppLayout() {
                         <React.Fragment key={index}>
                           <BreadcrumbItem>
                             {crumb.href ? (
-                              <BreadcrumbLink href={crumb.href}>
-                                {crumb.label}
+                              <BreadcrumbLink asChild>
+                                <Link to={crumb.href}>{crumb.label}</Link>
                               </BreadcrumbLink>
                             ) : (
                               <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
@@ -99,7 +99,12 @@ export function AppLayout() {
                 <ThemeToggle />
                 <HelpSystem />
                 
-                <Button variant="ghost" size="sm" className="h-9 w-9 p-0 relative">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-9 w-9 p-0 relative"
+                  onClick={() => console.log('Notifications clicked')}
+                >
                   <Bell className="h-4 w-4" />
                   <Badge 
                     variant="destructive" 
@@ -109,7 +114,12 @@ export function AppLayout() {
                   </Badge>
                 </Button>
                 
-                <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="h-9 w-9 p-0"
+                  onClick={() => console.log('User profile clicked')}
+                >
                   <User className="h-4 w-4" />
                 </Button>
               </div>

@@ -226,10 +226,25 @@ const Index = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-muted-foreground hover:text-foreground transition-smooth">Features</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-smooth">Pricing</a>
-              <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-smooth">Testimonials</a>
-              <Button variant="ghost">Sign In</Button>
+              <button 
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-muted-foreground hover:text-foreground transition-smooth"
+              >
+                Features
+              </button>
+              <button 
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-muted-foreground hover:text-foreground transition-smooth"
+              >
+                Pricing
+              </button>
+              <button 
+                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-muted-foreground hover:text-foreground transition-smooth"
+              >
+                Testimonials
+              </button>
+              <Button variant="ghost" onClick={() => navigate('/dashboard')}>Sign In</Button>
               <AuthModal />
             </div>
           </div>
@@ -261,7 +276,12 @@ const Index = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <AuthModal />
-                <Button variant="outline" size="lg" className="glass border-muted">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="glass border-muted"
+                  onClick={() => console.log('Demo requested')}
+                >
                   <Play className="mr-2 h-4 w-4" />
                   Request Demo
                 </Button>
@@ -384,6 +404,13 @@ const Index = () => {
                   <Button 
                     className={`w-full ${plan.popular ? 'bg-gradient-primary hover:opacity-90' : 'glass border-muted'}`} 
                     variant={plan.popular ? 'default' : 'outline'}
+                    onClick={() => {
+                      if (plan.name === 'Enterprise') {
+                        console.log('Contact sales clicked');
+                      } else {
+                        navigate('/dashboard');
+                      }
+                    }}
                   >
                     {plan.cta}
                   </Button>
@@ -505,7 +532,12 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <AuthModal />
-                <Button variant="outline" size="lg" className="glass border-muted">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="glass border-muted"
+                  onClick={() => console.log('Demo scheduled')}
+                >
                   Schedule Demo
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -530,13 +562,25 @@ const Index = () => {
                 Eliminating development environment friction, one sync at a time.
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon">
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => window.open('https://github.com', '_blank')}
+                >
                   <Github className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="icon">
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => window.open('https://twitter.com', '_blank')}
+                >
                   <Twitter className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="icon">
+                <Button 
+                  variant="ghost" 
+                  size="icon"
+                  onClick={() => window.open('https://linkedin.com', '_blank')}
+                >
                   <Linkedin className="h-4 w-4" />
                 </Button>
               </div>
@@ -545,30 +589,30 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-smooth">Features</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Pricing</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Integrations</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Changelog</a></li>
+                <li><button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-foreground transition-smooth">Features</button></li>
+                <li><button onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })} className="hover:text-foreground transition-smooth">Pricing</button></li>
+                <li><button onClick={() => navigate('/integrations')} className="hover:text-foreground transition-smooth">Integrations</button></li>
+                <li><button onClick={() => console.log('Changelog clicked')} className="hover:text-foreground transition-smooth">Changelog</button></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-smooth">About</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Blog</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Careers</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Contact</a></li>
+                <li><button onClick={() => console.log('About clicked')} className="hover:text-foreground transition-smooth">About</button></li>
+                <li><button onClick={() => console.log('Blog clicked')} className="hover:text-foreground transition-smooth">Blog</button></li>
+                <li><button onClick={() => console.log('Careers clicked')} className="hover:text-foreground transition-smooth">Careers</button></li>
+                <li><button onClick={() => console.log('Contact clicked')} className="hover:text-foreground transition-smooth">Contact</button></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground transition-smooth">Documentation</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Help Center</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Community</a></li>
-                <li><a href="#" className="hover:text-foreground transition-smooth">Status</a></li>
+                <li><button onClick={() => navigate('/api-docs')} className="hover:text-foreground transition-smooth">Documentation</button></li>
+                <li><button onClick={() => console.log('Help Center clicked')} className="hover:text-foreground transition-smooth">Help Center</button></li>
+                <li><button onClick={() => console.log('Community clicked')} className="hover:text-foreground transition-smooth">Community</button></li>
+                <li><button onClick={() => console.log('Status clicked')} className="hover:text-foreground transition-smooth">Status</button></li>
               </ul>
             </div>
           </div>
@@ -577,9 +621,9 @@ const Index = () => {
           
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex space-x-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-smooth">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-smooth">Terms of Service</a>
-              <a href="#" className="hover:text-foreground transition-smooth">Cookie Policy</a>
+              <button onClick={() => console.log('Privacy Policy clicked')} className="hover:text-foreground transition-smooth">Privacy Policy</button>
+              <button onClick={() => console.log('Terms of Service clicked')} className="hover:text-foreground transition-smooth">Terms of Service</button>
+              <button onClick={() => console.log('Cookie Policy clicked')} className="hover:text-foreground transition-smooth">Cookie Policy</button>
             </div>
             <p className="text-sm text-muted-foreground">
               © 2024 EnvSync. All rights reserved.
