@@ -310,6 +310,14 @@ const Dashboard = () => {
                 <FileText className="mr-3 h-4 w-4" />
                 Templates
               </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start"
+                onClick={() => navigate('/integrations')}
+              >
+                <Zap className="mr-3 h-4 w-4" />
+                Integrations
+              </Button>
               <Button variant="ghost" className="w-full justify-start">
                 <Settings className="mr-3 h-4 w-4" />
                 Settings
