@@ -110,6 +110,8 @@ const initialConfig: EnvironmentConfig = {
 };
 
 export const EnvironmentBuilder: React.FC = () => {
+  // Live preview state
+  const [isPreviewRunning, setIsPreviewRunning] = useState(false);
   const [config, setConfig] = useState<EnvironmentConfig>(initialConfig);
   const [activeTab, setActiveTab] = useState('general');
   const [isDeploying, setIsDeploying] = useState(false);
@@ -438,7 +440,16 @@ export const EnvironmentBuilder: React.FC = () => {
                   </Button>
                 </CardHeader>
                 <CardContent>
-                  <LivePreview config={config} />
+                  <LivePreview 
+                    config={config}
+                    isRunning={isPreviewRunning}
+                    onStart={() => setIsPreviewRunning(true)}
+                    onStop={() => setIsPreviewRunning(false)}
+                    onRestart={() => {
+                      setIsPreviewRunning(false);
+                      setTimeout(() => setIsPreviewRunning(true), 1000);
+                    }}
+                  />
                 </CardContent>
               </Card>
             )}
