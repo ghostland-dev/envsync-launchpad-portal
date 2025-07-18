@@ -23,15 +23,16 @@ import {
 import { useToast } from '@/hooks/use-toast';
 
 import { SyncStatusDashboard } from './sync-dashboard/SyncStatusDashboard';
-import { EnvironmentComparison } from './sync-dashboard/EnvironmentComparison';
-import { SyncHistory } from './sync-dashboard/SyncHistory';
-import { ConflictResolution } from './sync-dashboard/ConflictResolution';
-import { SyncSettings } from './sync-dashboard/SyncSettings';
-import { PerformanceMetrics } from './sync-dashboard/PerformanceMetrics';
-import { TroubleshootingWizard } from './sync-dashboard/TroubleshootingWizard';
-import { SyncQueue } from './sync-dashboard/SyncQueue';
-import { TeamCoordination } from './sync-dashboard/TeamCoordination';
-import { SyncAnalytics } from './sync-dashboard/SyncAnalytics';
+// TODO: Create remaining components
+// import { EnvironmentComparison } from './sync-dashboard/EnvironmentComparison';
+// import { SyncHistory } from './sync-dashboard/SyncHistory';
+// import { ConflictResolution } from './sync-dashboard/ConflictResolution';
+// import { SyncSettings } from './sync-dashboard/SyncSettings';
+// import { PerformanceMetrics } from './sync-dashboard/PerformanceMetrics';
+// import { TroubleshootingWizard } from './sync-dashboard/TroubleshootingWizard';
+// import { SyncQueue } from './sync-dashboard/SyncQueue';
+// import { TeamCoordination } from './sync-dashboard/TeamCoordination';
+// import { SyncAnalytics } from './sync-dashboard/SyncAnalytics';
 
 export interface SyncStatus {
   status: 'synced' | 'syncing' | 'error' | 'offline' | 'conflict';
@@ -380,48 +381,72 @@ export const SyncDashboard: React.FC = () => {
                 onManualSync={handleManualSync}
                 isOnline={isOnline}
               />
-              <PerformanceMetrics environments={environments} />
+              {/* <PerformanceMetrics environments={environments} /> */}
             </TabsContent>
 
             <TabsContent value="comparison" className="space-y-6">
-              <EnvironmentComparison environments={environments} />
+              {/* <EnvironmentComparison environments={environments} /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Environment Comparison coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="history" className="space-y-6">
-              <SyncHistory />
+              {/* <SyncHistory /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Sync History coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="conflicts" className="space-y-6">
-              <ConflictResolution 
+              {/* <ConflictResolution 
                 environments={environments.filter(env => env.status.status === 'conflict')}
-              />
+              /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Conflict Resolution coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="queue" className="space-y-6">
-              <SyncQueue environments={environments} />
+              {/* <SyncQueue environments={environments} /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Sync Queue coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="team" className="space-y-6">
-              <TeamCoordination />
+              {/* <TeamCoordination /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Team Coordination coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="analytics" className="space-y-6">
-              <SyncAnalytics />
+              {/* <SyncAnalytics /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Sync Analytics coming soon...</p>
+              </div>
             </TabsContent>
 
             <TabsContent value="settings" className="space-y-6">
-              <SyncSettings />
+              {/* <SyncSettings /> */}
+              <div className="text-center py-12 text-muted-foreground">
+                <p>Sync Settings coming soon...</p>
+              </div>
             </TabsContent>
           </div>
         </Tabs>
       </div>
 
-      {/* Troubleshooting Wizard */}
+      {/* Troubleshooting Wizard - TODO: Implement */}
       {showTroubleshooting && (
-        <TroubleshootingWizard 
-          onClose={() => setShowTroubleshooting(false)}
-          environments={environments}
-        />
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-background rounded-lg p-6 max-w-md w-full">
+            <h3 className="text-lg font-semibold mb-4">Troubleshooting Wizard</h3>
+            <p className="text-muted-foreground mb-4">Coming soon...</p>
+            <Button onClick={() => setShowTroubleshooting(false)}>Close</Button>
+          </div>
+        </div>
       )}
     </div>
   );
