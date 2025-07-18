@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,6 +40,7 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
@@ -333,7 +335,10 @@ const Dashboard = () => {
                 <Users className="mr-2 h-4 w-4" />
                 Join Team
               </Button>
-              <Button className="bg-gradient-primary hover:opacity-90">
+              <Button 
+                className="bg-gradient-primary hover:opacity-90"
+                onClick={() => navigate('/wizard')}
+              >
                 <Plus className="mr-2 h-4 w-4" />
                 Create Environment
               </Button>
@@ -410,7 +415,10 @@ const Dashboard = () => {
                         <h3 className="text-lg font-semibold">No environments found</h3>
                         <p className="text-muted-foreground">Try adjusting your search or filters</p>
                       </div>
-                      <Button className="bg-gradient-primary hover:opacity-90">
+                      <Button 
+                        className="bg-gradient-primary hover:opacity-90"
+                        onClick={() => navigate('/wizard')}
+                      >
                         <Plus className="mr-2 h-4 w-4" />
                         Create Your First Environment
                       </Button>
