@@ -1,5 +1,7 @@
 # EnvSync Launchpad
 
+[![CI](https://github.com/ghostland-dev/envsync-launchpad-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/ghostland-dev/envsync-launchpad-portal/actions/workflows/ci.yml)
+
 Environment management portal, packaged for web and mobile with Capacitor.
 
 ## Features
